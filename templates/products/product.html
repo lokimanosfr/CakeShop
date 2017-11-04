@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-lg-6">
+            {% for image in product.productimage_set.all %}
+            <img src="{{ image.image.url }}" alt="" class="img-fluid rounded mx-auto d-block"> {% endfor %}
+        </div>
+        <div class="col-lg-6">
+            <h1>{{product.name}}</h1>
+            <div>
+                {{product.price}}
+            </div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Описание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#feedback" role="tab">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#delivery" role="tab">Доставка</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="description" role="tabpanel">{{product.description}}</div>
+                <div class="tab-pane fade" id="feedback" role="tabpanel">Отзывы тут</div>
+                <div class="tab-pane fade" id="delivery" role="tabpanel">Доставка тут</div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
